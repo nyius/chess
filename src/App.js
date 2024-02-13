@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ContextsProvider from './context/contextsProvider/ContextsProvider';
+
+// Pages ---------------------------------------------------------------------------------------------------//
+import Index from './pages/index/Index';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Router>
+			<ContextsProvider>
+				<div className="main-container" id="main-container">
+					<Routes>
+						<Route exact path="/" element={<Index />} />
+					</Routes>
+				</div>
+			</ContextsProvider>
+		</Router>
+	);
 }
 
 export default App;

@@ -1,0 +1,225 @@
+$play-area-height: 120rem;
+
+& .index-container {
+	margin: 4rem;
+	color: $light-1;
+	font-size: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+& .board-and-moves-container {
+	display: flex;
+	flex-direction: row;
+	gap: 5rem;
+	position: relative;
+	height: $play-area-height;
+}
+
+& .eval-bar {
+	height: 100%;
+	width: 5rem;
+	background-color: $dark-2;
+	position: relative;
+	display: flex;
+
+	& .white-bar {
+		position: absolute;
+		width: 100%;
+		background-color: $light-3;
+		bottom: 0;
+		transition: all 0.3s ease-in-out;
+	}
+
+	& .eval-count {
+		position: absolute;
+		top: 50%;
+		left: 30%;
+		color: $primary;
+		font-weight: bold;
+	}
+}
+
+& .chessboard {
+	height: $play-area-height;
+	aspect-ratio: 1/1;
+	background-color: $dark-2;
+	display: flex;
+	flex-wrap: wrap;
+
+	& .square-dark,
+	.square-light {
+		aspect-ratio: 1/1;
+		height: calc(#{$play-area-height}/ 8);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		-webkit-user-select: none; /* Safari */
+		-moz-user-select: none; /* Firefox */
+		-ms-user-select: none; /* IE10+/Edge */
+		user-select: none; /* Standard */
+
+		& .square-num {
+			position: absolute;
+			top: 0.5rem;
+			left: 0.5rem;
+			color: $light-4;
+			font-size: 2rem;
+			font-weight: bold;
+		}
+		& .square-letter {
+			position: absolute;
+			bottom: 0.5rem;
+			right: 0.5rem;
+			color: $light-4;
+			font-size: 2rem;
+			font-weight: bold;
+		}
+	}
+
+	& .square-light {
+		background-color: $light-3;
+	}
+
+	& .square-dark {
+		background-color: $dark-4;
+		color: rgba(#fff, 0.1);
+	}
+}
+
+& .piece {
+	aspect-ratio: 1/1;
+	height: 95%;
+	z-index: 50;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	&:active {
+		transform: translateX(1rem) translateY(1rem);
+	}
+}
+
+& .moves-container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 20vw;
+	height: calc(100% -4rem);
+	background-color: $dark-2;
+	overflow: auto;
+
+	& .moves {
+		display: flex;
+		flex-direction: column;
+		padding: 2rem;
+		height: 85%;
+		gap: 2rem;
+		overflow: auto;
+
+		& .move-row {
+			display: grid;
+			grid-template-columns: 1fr 3fr 3fr;
+			height: 3rem;
+			width: 100%;
+			justify-content: space-between;
+		}
+	}
+
+	& .top-section {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		top: 0;
+		background-color: $dark-3;
+		width: calc(100% - 4rem);
+		height: 2%;
+		padding: 2rem;
+
+		& .h1 {
+			font-weight: bold;
+		}
+	}
+
+	& .botom-section {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		bottom: 0;
+		background-color: $dark-3;
+		width: calc(100% - 4rem);
+		height: 10%;
+		padding: 2rem;
+	}
+}
+
+& .bottom-info {
+	display: flex;
+	flex-direction: row;
+	gap: 5rem;
+}
+
+& .checkbox-row {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	align-items: center;
+}
+
+& .checkboxes {
+	display: flex;
+	flex-direction: column;
+}
+
+.right-clicked-square {
+	position: relative;
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		content: '';
+		background-color: rgba($color: #f05f4f92, $alpha: 0.5) !important;
+		box-shadow: 0 0 0 0.1rem #904339 inset;
+	}
+}
+
+.new-square {
+	position: relative;
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		content: '';
+		background-color: rgba($color: #9968c792, $alpha: 0.5) !important;
+		box-shadow: 0 0 0 0.1rem #71499592 inset;
+	}
+}
+
+.prev-square {
+	position: relative;
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		content: '';
+		background-color: rgba($color: #754e9992, $alpha: 0.5) !important;
+		box-shadow: 0 0 0 0.1rem #49306192 inset;
+	}
+}

@@ -1,0 +1,36 @@
+$nav-height: 6.4rem;
+$sidebar-width: 30rem;
+$chat-container-width: 37rem;
+
+// Colors --------------------------------------
+$primary: #819ba6;
+$primary-focus: #72a7bd;
+
+$secondary: #b62619;
+$secondary-focus: #d8310b;
+
+$accent: #8c895d;
+$accent-focus: #b6af4c;
+
+$info: #74b9ff;
+$info-focus: #0984e3;
+
+$success: #55efc4;
+$success-focus: #00b894;
+
+$error: #ff7675;
+$error-focus: #d63031;
+
+$dark-1: #131922;
+$dark-2: #1b2531;
+$dark-3: #242d3a;
+$dark-4: #313d4a;
+$dark-5: #455364;
+
+$light-1: #fff;
+$light-2: #f2f2f2;
+$light-3: #d9d9d9;
+$light-4: #b7b7b7;
+$light-5: #757894;
+
+$primary-secondary: linear-gradient(45deg, $primary 0%, $secondary 100%);

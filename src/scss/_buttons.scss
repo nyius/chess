@@ -1,0 +1,384 @@
+$border-radius: 1rem;
+$padding-y: 1rem;
+$padding-x: 2rem;
+$btn-font-weight: 600;
+$btn-items-gap: 1rem;
+$margin-y: 1rem;
+$margin-x: 1rem;
+$shadow-04: rgba(
+	$color: #000000,
+	$alpha: 0.4,
+);
+$threshold: 55%;
+
+// BUTTONS -----------------------------------------
+@function contrast-color($color, $dark, $light) {
+	@return if(lightness($color) < $threshold, $light, $dark);
+}
+
+@keyframes btn-bg-move {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+.btn-wrapper {
+	width: fit-content;
+}
+
+.btn {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: $border-radius;
+	cursor: pointer;
+	padding: $padding-y $padding-x;
+	font-weight: $btn-font-weight;
+	gap: $btn-items-gap;
+	margin: $margin-y $margin-x;
+	width: fit-content;
+	height: fit-content;
+	box-shadow: 0 0 0.7rem 0 $shadow-04;
+	transition: 0.1s ease-in-out all;
+	overflow: hidden;
+	z-index: 1;
+
+	&::before {
+		content: '';
+		position: absolute;
+		left: -260%;
+		width: 230%;
+		height: 50rem;
+		transform: rotate(20deg);
+		transition: all 0.2s ease-in-out;
+		mix-blend-mode: hue;
+	}
+
+	span {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: 0.1s ease-in-out all;
+		pointer-events: none;
+
+		svg {
+			pointer-events: none;
+		}
+	}
+
+	&:hover {
+		&::before {
+			left: -100%;
+		}
+
+		span {
+			transform: rotate(45deg);
+		}
+	}
+}
+
+@media (min-width: 1440px) and (max-width: 2000px) {
+	.btn {
+		box-shadow: 0 0 0.4rem 0 $shadow-04;
+	}
+}
+
+.btn-primary {
+	@extend .btn;
+	background-color: $primary;
+	color: contrast-color($primary, $dark-1, $light-1);
+
+	&::before {
+		background-color: $secondary;
+	}
+
+	&:hover {
+		background-color: $primary-focus;
+		color: $light-2;
+	}
+}
+
+.btn-secondary {
+	@extend .btn;
+	background-color: $secondary;
+	color: contrast-color($secondary, $dark-1, $light-1);
+
+	&::before {
+		background-color: $primary;
+	}
+
+	&:hover {
+		background-color: $secondary-focus;
+		color: $light-1;
+	}
+}
+
+.btn-accent {
+	@extend .btn;
+	background-color: $accent;
+	color: contrast-color($accent, $dark-1, $light-1);
+
+	&::before {
+		background-color: $secondary;
+	}
+
+	&:hover {
+		background-color: $accent-focus;
+		color: $light-1;
+	}
+}
+
+.btn-info {
+	@extend .btn;
+	background-color: $info;
+	color: contrast-color($info, $dark-1, $light-1);
+
+	&::before {
+		background-color: $secondary;
+	}
+
+	&:hover {
+		background-color: $info-focus;
+		color: $light-1;
+	}
+}
+
+.btn-success {
+	@extend .btn;
+	background-color: $success;
+	color: contrast-color($success, $dark-1, $light-1);
+
+	&::before {
+		background-color: $secondary;
+	}
+
+	&:hover {
+		background-color: $success-focus;
+		color: $light-1;
+	}
+}
+
+.btn-error {
+	@extend .btn;
+	background-color: $error-focus;
+	color: contrast-color($error-focus, $dark-1, $light-1);
+
+	&::before {
+		background-color: $error;
+		mix-blend-mode: overlay;
+	}
+
+	&:hover {
+		background-color: $error-focus;
+		color: $light-1;
+	}
+}
+
+.btn-dark {
+	@extend .btn;
+	background-color: $dark-1;
+	color: contrast-color($dark-1, $dark-1, $light-1);
+
+	&::before {
+		background-color: $primary-focus;
+		mix-blend-mode: screen;
+	}
+
+	&:hover {
+		background-color: $dark-1;
+		color: $light-1;
+	}
+}
+
+.btn-ghost {
+	@extend .btn;
+	color: contrast-color($dark-1, $dark-1, $light-1);
+	box-shadow: 0 0 0rem 0 $shadow-04;
+
+	&::before {
+		background-color: $primary-focus;
+		mix-blend-mode: screen;
+	}
+
+	&:hover {
+		color: $light-1;
+	}
+}
+
+.btn-x {
+	@extend .btn;
+	height: 1.6rem;
+	aspect-ratio: 1/1;
+	background-color: $dark-1;
+	font-weight: 700;
+	margin: 0;
+
+	&::before {
+		background-color: $error;
+		left: -254%;
+		mix-blend-mode: color-dodge;
+	}
+
+	span {
+		font-size: 2rem;
+
+		svg {
+			pointer-events: none;
+		}
+	}
+
+	&:hover {
+		background-color: $error-focus;
+	}
+}
+
+.btn-drag {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $dark-4;
+	color: contrast-color($dark-1, $dark-1, $light-1);
+	height: 1.7rem;
+	width: 1rem;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	cursor: pointer;
+	font-size: 2rem;
+	transition: 0.1s ease-in-out all;
+	z-index: 1;
+
+	span {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		pointer-events: none;
+
+		svg {
+			pointer-events: none;
+		}
+	}
+
+	&:hover {
+		box-shadow: 0 0 0.5rem 0.1rem rgba($dark-1, $alpha: 1);
+		color: $primary;
+	}
+}
+
+.btn-group {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+& .collapse-arrow {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	font-size: 3rem;
+	margin: 0;
+	color: $light-3;
+	cursor: pointer;
+	transition: 0.1s all ease-in-out;
+
+	&:hover {
+		color: $secondary-focus;
+	}
+}
+
+// BUTTON SIZING-----------------------------------------
+.btn-xl {
+	font-size: 2.4rem;
+
+	span {
+		font-size: 2.8rem;
+	}
+}
+
+@media (min-width: 1440px) and (max-width: 2000px) {
+	.btn-xl {
+		font-size: 2rem;
+
+		span {
+			font-size: 2.4rem;
+		}
+	}
+}
+
+.btn-lg {
+	font-size: 2rem;
+
+	span {
+		font-size: 2.4rem;
+	}
+}
+
+@media (min-width: 1440px) and (max-width: 2000px) {
+	.btn-lg {
+		font-size: 1.5rem;
+
+		span {
+			font-size: 2rem;
+		}
+	}
+}
+
+.btn-md {
+	font-size: 1.6rem;
+
+	span {
+		font-size: 2rem;
+	}
+}
+
+@media (min-width: 1440px) and (max-width: 2000px) {
+	.btn-md {
+		font-size: 1.2rem;
+
+		span {
+			font-size: 1.5rem;
+		}
+	}
+}
+
+.btn-sm {
+	font-size: 1.2rem;
+
+	span {
+		font-size: 1.6rem;
+	}
+}
+
+@media (min-width: 1440px) and (max-width: 2000px) {
+	.btn-sm {
+		font-size: 1.3rem;
+
+		span {
+			font-size: 1.3rem;
+		}
+	}
+}
+
+.drag {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// border-radius: $border-radius;
+	cursor: pointer;
+	padding: $padding-y $padding-x;
+	font-weight: $btn-font-weight;
+	gap: $btn-items-gap;
+	margin: $margin-y $margin-x;
+	width: fit-content;
+	height: fit-content;
+	box-shadow: 0 0 0.7rem 0 $shadow-04;
+	transition: 0.1s ease-in-out all;
+	overflow: hidden;
+	z-index: 1;
+	background-color: $dark-1;
+	color: contrast-color($dark-1, $dark-1, $light-1);
+}
